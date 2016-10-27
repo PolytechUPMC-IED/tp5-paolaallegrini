@@ -1,0 +1,80 @@
+exo1:
+
+2) dans répertoire git : ./  ../  .git/
+-------------
+3) touch file1 dans git 
+-------------
+4)notre branche a bien été créée, nouveau fichier file1, en rouge donc pas pris en compte lors d'un commit (besoin commande git add)
+-------------
+5) fichier indéxé dans git donc modifications prises en compte lors d'un git commit 
+-------------
+6) 
+git commit -m "test premier commit"
+[master (commit racine) 53010ba] test premier commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file1
+-------------
+7) tous les changements ont été ajoutés donc rien à faire. 
+git status
+Sur la branche master
+rien à valider, la copie de travail est propre
+-------------
+8)Donne des informations sur chaque commit effectué avec date, auteur, message ...
+-------------
+9)Affiche les dernières modifications du fichier ex: ajout/suppression de texte, editeur de texte utilisé...
+---------------------------------------------------
+exo2:
+
+1) git branch
+* master
+  test
+-------------
+3)git checkout test
+M	file1
+Basculement sur la branche 'test'
+3408300@pc4064:~/Info/OPI/TP5/git$ git add file1
+3408300@pc4064:~/Info/OPI/TP5/git$ git status
+Sur la branche test
+Modifications qui seront validées :
+  (utilisez "git reset HEAD <fichier>..." pour désindexer)
+
+	modifié:         file1
+
+git commit -m "modification file1 et ajout dans branche test"
+[test e030c21] modification file1 et ajout dans branche test
+ 1 file changed, 2 insertions(+)
+-------------
+4) donne l'historique de tous les commits dans toutes les  branches
+
+* e030c21 (HEAD, test) modification file1 et ajout dans branche test
+* 53010ba (master) test premier commit
+-------------
+5) 
+git log --graph --decorate --oneline --all
+* e030c21 (HEAD, test, master) modification file1 et ajout dans branche test
+* 53010ba test premier commit
+-------------
+6)
+git merge test
+Fusion automatique de file1
+CONFLIT (contenu) : Conflit de fusion dans file1
+La fusion automatique a échoué ; réglez les conflits et validez le résultat.
+
+Même ligne du fichier modifiée donc conflit, dans fichier file1 : les deux versions ajoutées.
+-------------
+7)
+git commit -a -m "conflit resolu"
+-------------
+8)
+Branche test supprimée (précédemment 3bccbef).
+---------------------------------------------------
+exo3:
+
+
+
+
+
+
+
+
+

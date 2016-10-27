@@ -1,0 +1,29 @@
+CC = gcc
+CFLAGS= -O3 -Wall
+SOURCES= printer.c pbmeps9.c 
+OBJETS= $(SOURCES:.c=.o)
+LDLIBS= -funroll-loops
+COMPILE = $(CC) $(CFLAGS)
+
+all: pbm2png pbm2eps9
+
+pbm2png : pbm2png.c
+	$(COMPILE) $(LDLIBS) -s -o pbm2png pbm2png.c -lpng
+
+pbm2eps9 : pbm2eps9.o printer.o
+	$(COMPILE) $(LDLIBS) -c -o pbm2eps9.o pbm2eps9.c
+	$(COMPILE) $(LDLIBS) -c -o printer.o printer.c
+	$(CC) -s -o pbm2eps9 pbm2eps9.o printer.o
+
+%.o : %.c 
+	$(CC) -c -o $@ $<
+
+
+clean:
+	rm -f pbm2png pbm2eps9 pbm2eps9.o printer.o
+
+.PHONY: all clean
+
+
+pbm2eps9.o: pbm2eps9.c printer.h
+printer.o: printer.c
